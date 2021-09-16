@@ -33,7 +33,7 @@ joblib==1.0.1
 #mkl-random==1.2.2
 #mkl-service==2.4.0
 multidict==5.1.0
-nltk==3.6.2
+#nltk==3.6.2
 numpy==1.20.3
 pip==21.0.1
 protobuf==3.17.2
