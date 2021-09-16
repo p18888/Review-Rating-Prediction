@@ -6,21 +6,18 @@ from gensim.models import Word2Vec
 import numpy as np # linear algebra
 
 import re # for regex
-from nltk.corpus import stopwords
-from nltk.tokenize import word_tokenize,sent_tokenize
-from nltk.stem import SnowballStemmer
-from sklearn.feature_extraction.text import CountVectorizer
-from sklearn.model_selection import train_test_split
+# from nltk.corpus import stopwords
+from nltk.tokenize import word_tokenize
 from sklearn.naive_bayes import GaussianNB,MultinomialNB,BernoulliNB
-from sklearn.metrics import accuracy_score
 import pickle
 import string
 from sklearn.ensemble import RandomForestClassifier
-nltk.download(all)
+# nltk.download(all)
 
 # Data cleaaning Function
 
 def removing_email_address(text):
+
     return text.replace(r'^.+@[^\.].*\.[a-z]{2,}$','')
 
 def removing_emojis(text):
@@ -52,7 +49,23 @@ def remove_word_less_than_2(text):
     return [w for w in text.split() if len(w)>2]
 
 def rem_stopwords(text):
-    stop_words = set(stopwords.words('english'))
+    stop_words = ['i', 'me', 'my', 'myself', 'we', 'our', 'ours', 'ourselves', 'you', "you're", 
+    "you've", "you'll", "you'd", 'your', 'yours', 'yourself', 'yourselves', 'he', 'him', 'his', 
+    'himself', 'she', "she's", 'her', 'hers', 'herself', 'it', "it's", 'its', 'itself', 'they', 
+    'them', 'their', 'theirs', 'themselves', 'what', 'which', 'who', 'whom', 'this', 'that', 
+    "that'll", 'these', 'those', 'am', 'is', 'are', 'was', 'were', 'be', 'been', 'being', 
+    'have', 'has', 'had', 'having', 'do', 'does', 'did', 'doing', 'a', 'an', 'the', 'and', 
+    'but', 'if', 'or', 'because', 'as', 'until', 'while', 'of', 'at', 'by', 'for', 'with', 
+    'about', 'against', 'between', 'into', 'through', 'during', 'before', 'after', 'above', 
+    'below', 'to', 'from', 'up', 'down', 'in', 'out', 'on', 'off', 'over', 'under', 'again', 
+    'further', 'then', 'once', 'here', 'there', 'when', 'where', 'why', 'how', 'all', 'any', 
+    'both', 'each', 'few', 'more', 'most', 'other', 'some', 'such', 'no', 'nor', 'not', 'only', 
+    'own', 'same', 'so', 'than', 'too', 'very', 's', 't', 'can', 'will', 'just', 'don', "don't", 
+    'should', "should've", 'now', 'd', 'll', 'm', 'o', 're', 've', 'y', 'ain', 'aren', "aren't", 
+    'couldn', "couldn't", 'didn', "didn't", 'doesn', "doesn't", 'hadn', "hadn't", 'hasn', "hasn't", 
+    'haven', "haven't", 'isn', "isn't", 'ma', 'mightn', "mightn't", 'mustn', "mustn't", 'needn', 
+    "needn't", 'shan', "shan't", 'shouldn', "shouldn't", 'wasn', "wasn't", 'weren', "weren't", 
+    'won', "won't", 'wouldn', "wouldn't"]
     return [w for w in text if w not in stop_words]
 
 def stem_txt(text):
