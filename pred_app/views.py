@@ -1,13 +1,13 @@
 from django.shortcuts import render,HttpResponse
 
-import nltk
-from nltk.stem import WordNetLemmatizer
+# import nltk
+# from nltk.stem import WordNetLemmatizer
 from gensim.models import Word2Vec
 import numpy as np # linear algebra
 
 import re # for regex
 # from nltk.corpus import stopwords
-from nltk.tokenize import word_tokenize
+# from nltk.tokenize import word_tokenize
 from sklearn.naive_bayes import GaussianNB,MultinomialNB,BernoulliNB
 import pickle
 import string
@@ -71,7 +71,7 @@ def rem_stopwords(text):
 def stem_txt(text):
     lemma_words=[]
     for word in text:
-        word = WordNetLemmatizer().lemmatize(word,pos='v')
+        # word = WordNetLemmatizer().lemmatize(word,pos='v')
         lemma_words.append(word)
     return ' '.join(lemma_words)
 
@@ -88,7 +88,7 @@ def predict_rating(text):
     remove_word_lessthan2=remove_word_less_than_2(removenumbers)
     remstopwords=rem_stopwords(remove_word_lessthan2)
     stemtxt=stem_txt(remstopwords)
-    bow,words = [],word_tokenize(stemtxt)
+    bow,words = [],stemtxt.split()
     for word in words:
         bow.append(words.count(word))
     inp = []
