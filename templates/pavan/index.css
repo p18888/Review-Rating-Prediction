@@ -1,0 +1,24 @@
+input[type=text] {
+    height:17px;
+    border: 0;
+    width: calc(100% - 2px);
+    margin-left:1px;
+    box-shadow: -8px 10px 0px -7px #ebebeb, 8px 10px 0px -7px #ebebeb;
+    -webkit-transition: box-shadow 0.3s;
+    transition: box-shadow 0.3s;
+  }
+  input[type=text]:focus {
+    outline: none;
+    box-shadow: -8px 10px 0px -7px black, 8px 10px 0px -7px black;
+  }
+ /* .back{
+     background-color: black;
+ } */
+ .text{
+     color:black;
+ }
+ .pre{
+    color:#39C0ED;
+    border-radius: 5px;
+    background-color: black;
+ }
