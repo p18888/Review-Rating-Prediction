@@ -74,7 +74,7 @@ def stem_txt(text):
         # word = WordNetLemmatizer().lemmatize(word,pos='v')
         lemma_words.append(word)
     return ' '.join(lemma_words)
-loaded_model = pickle.load(open('rating_bow.pkl', 'rb'))
+vocabularies = pickle.load(open('rating_bow.pkl', 'rb'))
 loaded_model = pickle.load(open('rating_model_rf.pkl', 'rb'))
 def predict_rating(text):
     rem_email=removing_email_address(text)
