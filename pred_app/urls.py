@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path
-from Review-Rating-Prediction.pred_app import views
+from pred_app import views
 
 urlpatterns = [
     path('',views.index,name='index'),
